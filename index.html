@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiry Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .container:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #56d8e4;
+            outline: none;
+            box-shadow: inset 0 0 5px rgba(86, 216, 228, 0.7);
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .checkbox-group input {
+            margin-right: 5px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #56d8e4;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #9f01ea;
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .other-option {
+            margin-top: 10px;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .other-option:focus {
+            border-color: #56d8e4;
+            outline: none;
+            box-shadow: inset 0 0 5px rgba(86, 216, 228, 0.7);
+        }
+
+        .product-options {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        .product-options label {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .product-options input {
+            margin-right: 5px;
+        }
+
+        .show {
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                width: 90%;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            label {
+                font-size: 14px;
+            }
+
+            .submit-btn {
+                font-size: 16px;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            .submit-btn {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            input[type="text"],
+            input[type="date"],
+            textarea,
+            select {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .other-option {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Incoming Enquiries</h2>
+        <form id="inquiry-form">
+            <div class="form-group">
+                <label for="company_name">Company Name *</label>
+                <input type="text" id="company_name" name="Company Name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="contact_name">Contact Person Name *</label>
+                <input type="text" id="contact_name" name="Contact Person Name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="contact_number">Contact Number *</label>
+                <input type="text" id="contact_number" name="Contact Number" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="buyer_location">Buyer Location *</label>
+                <input type="text" id="buyer_location" name="Buyer Location" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Price *</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="Price" value="Delivery"> Delivery</label>
+                    <label><input type="checkbox" name="Price" value="Ex-Factory"> Ex-Factory</label>
+                    <label><input type="checkbox" name="Price" value="Other" id="priceOtherCheckbox"> Other</label>
+                </div>
+                <input type="text" id="priceOtherInput" class="other-option" placeholder="Specify Other" style="display: none;">
+            </div>
+            
+            <!-- Products to Sell Section -->
+            <div class="form-group">
+                <label>Product Want to Sell</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" class="product-checkbox" data-product="Paddy"> Paddy</label>
+                    <label><input type="checkbox" class="product-checkbox" data-product="Husk"> Husk</label>
+                    <label><input type="checkbox" class="product-checkbox" data-product="Oil"> Oil</label>
+                    <label><input type="checkbox" class="product-checkbox" data-product="Rice_Bran"> Rice Bran</label>
+                    <label><input type="checkbox" class="product-checkbox" data-product="Rice_Sell"> Rice</label>
+                    <label><input type="checkbox" class="product-checkbox" data-product="Crude"> Crude</label>
+                    <label><input type="checkbox" class="product-checkbox" data-product="Other" id="sellOtherCheckbox"> Other</label>
+                </div>
+                <input type="text" id="sellOtherInput" class="other-option" placeholder="Specify Other Product to Sell" style="display: none;">
+                
+                <div id="Paddy-options" class="product-options">
+                    <label><input type="checkbox" name="Paddy-options" value="Sita Paddy"> Sita Paddy</label>
+                    <label><input type="checkbox" name="Paddy-options" value="Choto Sita Paddy"> Choto Sita Paddy</label>
+                    <label><input type="checkbox" name="Paddy-options" value="Lalat"> Lalat</label>
+                    <label><input type="checkbox" name="Paddy-options" value="Laghv"> Laghu</label>
+                    <label><input type="checkbox" name="Paddy-options" value="G.S."> G.S.</label>
+                    <label><input type="checkbox" name="Paddy-options" value="Super Shamali"> Super Shamali</label>
+                    <label><input type="checkbox" name="Paddy-options" value="Mota Paddy"> Mota Paddy</label>
+                    <label><input type="checkbox" name="Paddy-options" value="1001 Mota Paddy"> 1001 Mota Paddy</label>
+                    <label><input type="checkbox" name="Paddy-options" value="C.M."> C.M.</label>
+                    <label><input type="checkbox" name="Paddy-options" value="Puja"> Puja</label>
+                    <label><input type="checkbox" name="Paddy-options" value="Pratiksha"> Pratiksha</label>
+                    <label><input type="checkbox" name="Paddy-options" value="Ranchi Sita"> Ranchi Sita</label>
+                    <!-- Add other Paddy options -->
+                </div>
+
+                <div id="Oil-options" class="product-options">
+                    <label><input type="checkbox" name="Oil-options" value="White"> White</label>
+                    <label><input type="checkbox" name="Oil-options" value="Posta"> Posta</label>
+                    <label><input type="checkbox" name="Oil-options" value="Assam"> Assam</label>
+                    <label><input type="checkbox" name="Oil-options" value="Alwar"> Alwar</label>
+                </div>
+                
+                <div id="Rice_Sell-options" class="product-options">
+                    <label><input type="checkbox" name="Rice" value="1. Laghu"> 1. Laghu</label>
+            <label><input type="checkbox" name="Rice" value="2. C.M"> 2. C.M</label>
+            <label><input type="checkbox" name="Rice" value="3. G.S"> 3. G.S</label>
+            <label><input type="checkbox" name="Rice" value="4. Sita"> 4. Sita</label>
+            <label><input type="checkbox" name="Rice" value="5. C. Sita"> 5. C. Sita</label>
+            <label><input type="checkbox" name="Rice" value="6. Hybrid"> 6. Hybrid</label>
+            <label><input type="checkbox" name="Rice" value="7. Super Shyamali"> 7. Super Shyamali</label>
+            <label><input type="checkbox" name="Rice" value="8. 1 No. G.B"> 8. 1 No. G.B</label>
+            <label><input type="checkbox" name="Rice" value="9. 2 No. G.B"> 9. 2 No. G.B</label>
+            <label><input type="checkbox" name="Rice" value="10. 3 No. Broken"> 10. 3 No. Broken</label>
+            <label><input type="checkbox" name="Rice" value="11. Rejection"> 11. Rejection</label>
+            <label><input type="checkbox" name="Rice" value="12. Levy Rice"> 12. Levy Rice</label>
+            <label><input type="checkbox" name="Rice" value="13. Silky Laghu"> 13. Silky Laghu</label>
+            <label><input type="checkbox" name="Rice" value="14. Ratna Rice"> 14. Ratna Rice</label>
+            <label><input type="checkbox" name="Rice" value="15. 1010 Rice"> 15. 1010 Rice</label>
+            <label><input type="checkbox" name="Rice" value="16. 4094 Rice"> 16. 4094 Rice</label>
+            <label><input type="checkbox" name="Rice" value="17. Miniket Rice 1/2"> 17. Miniket Rice 1/2</label>
+            <label><input type="checkbox" name="Rice" value="18. Bypass Miniket"> 18. Bypass Miniket</label>
+            <label><input type="checkbox" name="Rice" value="19. Bypass 4094"> 19. Bypass 4094</label>
+            <label><input type="checkbox" name="Rice" value="20. Jerakathi Rice"> 20. Jerakathi Rice</label>
+            <label><input type="checkbox" name="Rice" value="21. Sonam Rice"> 21. Sonam Rice</label>
+            <label><input type="checkbox" name="Rice" value="22. Rupali Rice"> 22. Rupali Rice</label>
+            <label><input type="checkbox" name="Rice" value="23. Grader Broken"> 23. Grader Broken</label>
+            <label><input type="checkbox" name="Rice" value="24. Rejection"> 24. Rejection</label>
+            <label><input type="checkbox" name="Rice" value="25. 3 No. Broken"> 25. 3 No. Broken</label>
+            <label><input type="checkbox" name="Rice" value="26. Re- Milling Rice"> 26. Re- Milling Rice</label>
+                    <!-- Add other Rice options -->
+                </div>
+
+                <div id="Crude-options" class="product-options">
+                    <label><input type="checkbox" name="Crude-options" value="Low FFA"> Low FFA (3% - 6%)</label>
+                    <label><input type="checkbox" name="Crude-options" value="High FFA"> High FFA (6% - 10%)</label>
+                </div>
+
+                <div id="Rice_Bran-options" class="product-options">
+                    <label><input type="checkbox" name="Rice_Bran-options" value="23% (Boiled)"> 23% (Boiled)</label>
+                    <label><input type="checkbox" name="Rice_Bran-options" value="20% (Raw)"> 20% (Raw)</label>
+                    <label><input type="checkbox" name="Rice_Bran-options" value="10% (Mota)"> 10% (Mota)</label>
+                    <label><input type="checkbox" name="Rice_Bran-options" value="7% (Mota)"> 7% (Mota)</label>
+                </div>
+            </div>
+            
+            <!-- Products to Buy Section -->
+            <div class="form-group">
+                <label>Product Want to Buy</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="buy-product" value="Oil" onclick="showBuyOptions('oil')"> Oil</label>
+                    <label><input type="checkbox" name="buy-product" value="DORB" onclick="showBuyOptions('dorb')"> DORB</label>
+                    <label><input type="checkbox" name="buy-product" value="Wax" onclick="showBuyOptions('wax')"> Wax</label>
+                    <label><input type="checkbox" name="buy-product" value="Fatty" onclick="showBuyOptions('fatty')"> Fatty</label>
+                    <label><input type="checkbox" name="buy-product" value="RiceBran" onclick="showBuyOptions('ricebran')"> Rice Bran</label>
+                    <label><input type="checkbox" name="buy-product" value="Rice" onclick="showBuyOptions('rice')"> Rice</label>
+                    <label><input type="checkbox" name="buy-product" value="Crude" onclick="showBuyOptions('crude')"> Crude</label>
+                    <label><input type="checkbox" name="buy-product" value="S Earth" onclick="showBuyOptions('searth')"> S Earth</label>
+                    <label><input type="checkbox" name="buy-product" value="Gums" onclick="showBuyOptions('gums')"> Gums</label>
+                    <label><input type="checkbox" name="buy-product" value="Other" id="buyOtherCheckbox"> Other</label>
+                </div>
+                <input type="text" id="buyOtherInput" class="other-option" placeholder="Specify Other Product to Buy" style="display: none;">
+                
+                <div id="rice-buy-options" class="product-options">
+                    <label>Rice Type:</label>
+                    <div class="options-group">
+                        <label><input type="checkbox" name="Rice" value="1. Laghu"> 1. Laghu</label>
+                <label><input type="checkbox" name="Rice" value="2. C.M"> 2. C.M</label>
+                <label><input type="checkbox" name="Rice" value="3. G.S"> 3. G.S</label>
+                <label><input type="checkbox" name="Rice" value="4. Sita"> 4. Sita</label>
+                <label><input type="checkbox" name="Rice" value="5. C. Sita"> 5. C. Sita</label>
+                <label><input type="checkbox" name="Rice" value="6. Hybrid"> 6. Hybrid</label>
+                <label><input type="checkbox" name="Rice" value="7. Super Shyamali"> 7. Super Shyamali</label>
+                <label><input type="checkbox" name="Rice" value="8. 1 No. G.B"> 8. 1 No. G.B</label>
+                <label><input type="checkbox" name="Rice" value="9. 2 No. G.B"> 9. 2 No. G.B</label>
+                <label><input type="checkbox" name="Rice" value="10. 3 No. Broken"> 10. 3 No. Broken</label>
+                <label><input type="checkbox" name="Rice" value="11. Rejection"> 11. Rejection</label>
+                <label><input type="checkbox" name="Rice" value="12. Levy Rice"> 12. Levy Rice</label>
+                <label><input type="checkbox" name="Rice" value="13. Silky Laghu"> 13. Silky Laghu</label>
+                <label><input type="checkbox" name="Rice" value="14. Ratna Rice"> 14. Ratna Rice</label>
+                <label><input type="checkbox" name="Rice" value="15. 1010 Rice"> 15. 1010 Rice</label>
+                <label><input type="checkbox" name="Rice" value="16. 4094 Rice"> 16. 4094 Rice</label>
+                <label><input type="checkbox" name="Rice" value="17. Miniket Rice 1/2"> 17. Miniket Rice 1/2</label>
+                <label><input type="checkbox" name="Rice" value="18. Bypass Miniket"> 18. Bypass Miniket</label>
+                <label><input type="checkbox" name="Rice" value="19. Bypass 4094"> 19. Bypass 4094</label>
+                <label><input type="checkbox" name="Rice" value="20. Jerakathi Rice"> 20. Jerakathi Rice</label>
+                <label><input type="checkbox" name="Rice" value="21. Sonam Rice"> 21. Sonam Rice</label>
+                <label><input type="checkbox" name="Rice" value="22. Rupali Rice"> 22. Rupali Rice</label>
+                <label><input type="checkbox" name="Rice" value="23. Grader Broken"> 23. Grader Broken</label>
+                <label><input type="checkbox" name="Rice" value="24. Rejection"> 24. Rejection</label>
+                <label><input type="checkbox" name="Rice" value="25. 3 No. Broken"> 25. 3 No. Broken</label>
+                <label><input type="checkbox" name="Rice" value="26. Re- Milling Rice"> 26. Re- Milling Rice</label>
+                        <!-- Add other Rice options -->
+                    </div>
+                </div>
+
+                <div id="oil-buy-options" class="product-options">
+                    <label>Oil Type:</label>
+                    <div class="options-group">
+                        <label><input type="checkbox" name="oil-buy-type" value="White"> White</label>
+                        <label><input type="checkbox" name="oil-buy-type" value="Posta"> Posta</label>
+                        <label><input type="checkbox" name="oil-buy-type" value="Assam"> Assam</label>
+                        <label><input type="checkbox" name="oil-buy-type" value="Alwar"> Alwar</label>
+                    </div>
+                </div>
+
+                <div id="dorb-buy-options" class="product-options">
+                    <label>DORB Type:</label>
+                    <div class="options-group">
+                        <label><input type="checkbox" name="dorb-type" value="Hemgem"> Hemgem</label>
+                        <label><input type="checkbox" name="dorb-type" value="Premium"> Premium</label>
+                        <label><input type="checkbox" name="dorb-type" value="Grade I"> Grade I</label>
+                        <label><input type="checkbox" name="dorb-type" value="Grade II"> Grade II</label>
+                        <label><input type="checkbox" name="dorb-type" value="Gold"> Gold</label>
+                        <label><input type="checkbox" name="dorb-type" value="NG"> NG</label>
+                        <!-- Add other DORB options -->
+                    </div>
+                </div>
+
+                <div id="crude-buy-options" class="product-options">
+                    <label>Crude Type:</label>
+                    <div class="options-group">
+                        <label><input type="checkbox" name="crude-buy-type" value="Low FFA"> Low FFA (3% - 6%)</label>
+                        <label><input type="checkbox" name="crude-buy-type" value="High FFA"> High FFA (6% - 10%)</label>
+                    </div>
+                </div>
+
+                <div id="fatty-buy-options" class="product-options">
+                    <label>Fatty Type:</label>
+                    <div class="options-group">
+                        <label><input type="checkbox" name="fatty-buy-type" value="Non Guarantee"> Non Guarantee</label>
+                        <label><input type="checkbox" name="fatty-buy-type" value="Guarantee"> Guarantee</label>
+                    </div>
+                </div>
+
+                <div id="ricebran-buy-options" class="product-options">
+                    <label>Rice Bran Type:</label>
+                    <div class="options-group">
+                        <label><input type="checkbox" name="ricebran-buy-type" value="23% (Boiled)"> 23% (Boiled)</label>
+                        <label><input type="checkbox" name="ricebran-buy-type" value="20% (Raw)"> 20% (Raw)</label>
+                        <label><input type="checkbox" name="ricebran-buy-type" value="10% (Mota)"> 10% (Mota)</label>
+                        <label><input type="checkbox" name="ricebran-buy-type" value="7% (Mota)"> 7% (Mota)</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="monthly_supply">Monthly Supply / Consumption Capacity *</label>
+                <input type="text" id="monthly_supply" name="Monthly Supply / Consumption Capacity">
+            </div>
+
+            <div class="form-group">
+                <label for="existing_buyer">Existing Buyer Name *</label>
+                <input type="text" id="existing_buyer" name="Existing Buyer Name">
+            </div>
+            
+            <div class="form-group">
+                <label for="existing_supplier">Existing Supplier Name *</label>
+                <input type="text" id="existing_supplier" name="Existing Supplier Name">
+            </div>
+            
+            <div class="form-group">
+                <label>Reason of Phone Call *</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="Reason of Phone Call" value="Want to Purchase"> Want to Purchase</label>
+                    <label><input type="checkbox" name="Reason of Phone Call" value="Want to Sale"> Want to Sale</label>
+                    <label><input type="checkbox" name="Reason of Phone Call" value="Purchase and Sale Both"> Purchase and Sale Both</label>
+                    <label><input type="checkbox" name="Reason of Phone Call" value="Other" id="reasonOtherCheckbox"> Other</label>
+                </div>
+                <input type="text" id="reasonOtherInput" class="other-option" placeholder="Specify Other" style="display: none;">
+            </div>
+            
+            <div class="form-group">
+                <label for="attended_call">Person Name Who Attended The Call *</label>
+                <input type="text" id="attended_call" name="Person Name Who Attended The Call">
+            </div>
+            
+            <div class="form-group">
+                <label for="forwarded_to">Enquiry forwarded to the person *</label>
+                <input type="text" id="forwarded_to" name="Enquiry forwarded to the person">
+            </div>
+            
+            <div class="form-group">
+                <label for="call_outcome">Call Outcome *</label>
+                <textarea id="call_outcome" name="Call Outcome" rows="3"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="follow_up_date">Follow Up Date *</label>
+                <input type="date" id="follow_up_date" name="Follow Up Date">
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Show/hide "other" input fields
+        document.getElementById('priceOtherCheckbox').addEventListener('change', function() {
+            document.getElementById('priceOtherInput').style.display = this.checked ? 'block' : 'none';
+        });
+        
+        document.getElementById('sellOtherCheckbox').addEventListener('change', function() {
+            document.getElementById('sellOtherInput').style.display = this.checked ? 'block' : 'none';
+        });
+        
+        document.getElementById('buyOtherCheckbox').addEventListener('change', function() {
+            document.getElementById('buyOtherInput').style.display = this.checked ? 'block' : 'none';
+        });
+        
+        document.getElementById('reasonOtherCheckbox').addEventListener('change', function() {
+            document.getElementById('reasonOtherInput').style.display = this.checked ? 'block' : 'none';
+        });
+        
+        // Show/hide product options for sell products
+        document.querySelectorAll('.product-checkbox').forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                let product = this.dataset.product;
+                let productOptions = document.querySelector(`#${product}-options`);
+                if (productOptions) {
+                    productOptions.style.display = this.checked ? 'block' : 'none';
+                }
+            });
+        });
+        
+        // Show/hide product options for buy products
+        function showBuyOptions(productType) {
+            const optionsDiv = document.getElementById(productType + '-buy-options');
+            if (optionsDiv) {
+                const checkbox = document.querySelector(`input[name="buy-product"][value="${productType === 'rice' ? 'Rice' : 
+                  productType === 'oil' ? 'Oil' : 
+                  productType === 'dorb' ? 'DORB' : 
+                  productType === 'crude' ? 'Crude' : 
+                  productType === 'fatty' ? 'Fatty' : 
+                  productType === 'ricebran' ? 'RiceBran' : ''}"]`);
+                
+                if (checkbox && checkbox.checked) {
+                    optionsDiv.style.display = 'block';
+                } else {
+                    optionsDiv.style.display = 'none';
+                }
+            }
+        }
+        
+        // Form submission handler
+        document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            
+            // Process checkbox groups
+            const sellProductsSelected = [];
+            document.querySelectorAll('.product-checkbox:checked').forEach(function(checkbox) {
+                const product = checkbox.parentElement.textContent.trim();
+                
+                // Get selected options for this product type
+                const productType = checkbox.dataset.product;
+                if (productType && productType !== 'Other') {
+                    const optionsContainer = document.getElementById(`${productType}-options`);
+                    if (optionsContainer) {
+                        const selectedOptions = [];
+                        optionsContainer.querySelectorAll('input[type="checkbox"]:checked').forEach(function(optionCheckbox) {
+                            selectedOptions.push(optionCheckbox.value);
+                        });
+                        
+                        if (selectedOptions.length > 0) {
+                            sellProductsSelected.push(`${product} (${selectedOptions.join(', ')})`);
+                        } else {
+                            sellProductsSelected.push(product);
+                        }
+                    } else {
+                        sellProductsSelected.push(product);
+                    }
+                }
+            });
+            
+            // Handle "Other" option for selling products
+            if (document.getElementById('sellOtherCheckbox').checked) {
+                const otherValue = document.getElementById('sellOtherInput').value;
+                if (otherValue) {
+                    sellProductsSelected.push(`Other: ${otherValue}`);
+                }
+            }
+            
+            // Process "Product Want to Buy" checkboxes
+            const buyProductsSelected = [];
+            document.querySelectorAll('input[name="buy-product"]:checked').forEach(function(checkbox) {
+                const product = checkbox.parentElement.textContent.trim();
+                const value = checkbox.value;
+                
+                // Handle specific product types
+                if (value === 'Oil' && document.getElementById('oil-buy-options')) {
+                    const selectedOptions = [];
+                    document.querySelectorAll('input[name="oil-buy-type"]:checked').forEach(function(option) {
+                        selectedOptions.push(option.value);
+                    });
+                    
+                    if (selectedOptions.length > 0) {
+                        buyProductsSelected.push(`Oil (${selectedOptions.join(', ')})`);
+                    } else {
+                        buyProductsSelected.push('Oil');
+                    }
+                } else if (value === 'DORB' && document.getElementById('dorb-buy-options')) {
+                    const selectedOptions = [];
+                    document.querySelectorAll('input[name="dorb-buy-type"]:checked').forEach(function(option) {
+                        selectedOptions.push(option.value);
+                    });
+                    
+                    if (selectedOptions.length > 0) {
+                        buyProductsSelected.push(`DORB (${selectedOptions.join(', ')})`);
+                    } else {
+                        buyProductsSelected.push('DORB');
+                    }
+                } else if (value !== 'Other') {
+                    buyProductsSelected.push(product);
+                }
+            });
+            
+            // Handle "Other" option for buying products
+            if (document.getElementById('buyOtherCheckbox').checked) {
+                const otherValue = document.getElementById('buyOtherInput').value;
+                if (otherValue) {
+                    buyProductsSelected.push(`Other: ${otherValue}`);
+                }
+            }
+            
+            // Create data object with all form fields
+            const data = {
+                'Company Name': document.getElementById('company_name').value,
+                'Contact Person Name': document.getElementById('contact_name').value,
+                'Contact Number': document.getElementById('contact_number').value,
+                'Buyer Location': document.getElementById('buyer_location').value,
+                'Price': Array.from(document.querySelectorAll('input[name="Price"]:checked')).map(cb => cb.value).join(', '),
+                'Product Want to Sell': sellProductsSelected.join(', '),
+                'Product Want to Buy': buyProductsSelected.join(', '),
+                'Monthly Supply / Consumption Capacity': document.getElementById('monthly_supply').value,
+                'Existing Buyer Name': document.getElementById('existing_buyer').value,
+                'Existing Supplier Name': document.getElementById('existing_supplier').value,
+                'Reason of Phone Call': Array.from(document.querySelectorAll('input[name="Reason of Phone Call"]:checked')).map(cb => cb.value).join(', '),
+                'Person Name Who Attended The Call': document.getElementById('attended_call').value,
+                'Enquiry forwarded to the person': document.getElementById('forwarded_to').value,
+                'Call Outcome': document.getElementById('call_outcome').value,
+                'Follow Up Date': document.getElementById('follow_up_date').value
+            };
+            
+            // Special handling for "other" fields
+            if (document.getElementById('priceOtherCheckbox').checked) {
+                data['Price'] += `, Other: ${document.getElementById('priceOtherInput').value}`;
+            }
+            
+            if (document.getElementById('reasonOtherCheckbox').checked) {
+                data['Reason of Phone Call'] += `, Other: ${document.getElementById('reasonOtherInput').value}`;
+            }
+            
+            // Send data to Google Sheets
+            sendToGoogleSheets(data);
+        });
+        
+        function sendToGoogleSheets(data) {
+            // Create the Apps Script URL for your Google Sheet
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbypUC3Lm3QaEQcqrgjoD0WPwLWHIgiB69HMRy3p6QwyxTrsaxv6B4Fm2KdVStE3lv2wbA/exec';
+            
+            // Convert data object to URL params
+            const formData = new FormData();
+            Object.keys(data).forEach(key => {
+                formData.append(key, data[key]);
+            });
+            
+            fetch(scriptURL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Form submitted successfully!');
+                    document.getElementById('inquiry-form').reset();
+                    // Hide all product options
+                    document.querySelectorAll('.product-options').forEach(div => {
+                        div.style.display = 'none';
+                    });
+                    // Hide all "other" input fields
+                    document.querySelectorAll('.other-option').forEach(input => {
+                        input.style.display = 'none';
+                    });
+                } else {
+                    alert('Error submitting form. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error submitting form. Please try again.');
+            });
+        }
+    </script>
+</body>
+</html>
